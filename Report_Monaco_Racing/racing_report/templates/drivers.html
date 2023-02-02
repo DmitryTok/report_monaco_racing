@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% for driver in driver_list %}
+        <p><li><button type="button" class="btn btn-info"><a href="{{ driver }}">{{ driver[:3] }}</a></button> {{ driver[3:] }}</p>
+    {% endfor %}
+    <button type="button" class="btn btn-primary"><a class="nav-link" href="{{ url_for('welcome') }}">
+        Main Menu
+    </a></button>
+{% endblock content %}
