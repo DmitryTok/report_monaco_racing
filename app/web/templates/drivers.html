@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <ol class="list-group list-group-numbered">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">ABBR</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Team</th>
+                    </tr>
+                </thead>
+                {% for driver in drivers %}
+                <tbody>
+                    <tr>
+                        <th scope="row">
+                            <button type="button" class="btn btn-info">
+                                <a href="{{ url_for('routers.driver_info', abbr=driver.abbr) }}">{{ driver.abbr }}</a>
+                            </button>
+                        </th>
+                        <th scope="row">{{ driver.name }}</th>
+                        <th scope="row">{{ driver.team.name }}</th>
+                    </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+    </ol>
+    <button type="button" class="btn btn-primary"><a class="nav-link" href="{{ url_for('routers.index') }}">
+        Main Menu
+    </a></button>
+{% endblock content %}

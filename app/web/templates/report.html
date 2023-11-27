@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <ol class="list-group list-group-numbered">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Place</th>
+                        <th scope="col">ABBR</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Team</th>
+                        <th scope="col">Start Time</th>
+                        <th scope="col">End Time</th>
+                        <th scope="col">Result</th>
+                        <th scope="col">Stage</th>
+                        <th scope="col">Race</th>
+                    </tr>
+                </thead>
+                {% for item in report %}
+                <tbody>
+                    <tr>
+                        <th scope="row">{{ item.position }}</th>
+                        <th scope="row">{{ item.driver.abbr }}</th>
+                        <th scope="row">{{ item.driver.name }}</th>
+                        <th scope="row">{{ item.driver.team.name }}</th>
+                        <th scope="row">{{ item.start_time }}</th>
+                        <th scope="row">{{ item.end_time }}</th>
+                        <th scope="row">{{ item.result }}</th>
+                        <th scope="row">{{ item.stage.name }}</th>
+                        <th scope="row">{{ item.race.name }}</th>
+                    </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+    </ol>
+    <button type="button" class="btn btn-primary"><a class="nav-link" href="{{ url_for('routers.index') }}">
+        Main Menu
+    </a></button>
+{% endblock content %}
